@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>게시판 리스트</h1>
-<a href="write.do">글쓰기</a>
+	<a href="write.do">글쓰기</a>
 </body>
 </html>
