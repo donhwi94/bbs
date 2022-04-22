@@ -109,7 +109,14 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 			<scope>provided</scope>
-		</dependency>   
+		</dependency>  
+		
+		<!-- DB 관련 -->
+		<dependency>
+		 	<groupId>com.oracle.database.jdbc</groupId>
+		 	<artifactId>ojdbc6</artifactId>
+		 	<version>11.2.0.4</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>
