@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 리스트</title>
+<title>게시판 글수정 폼</title>
 </head>
 <body>
-<h1>게시판 리스트</h1>
-	<a href="view.do">자바입니다.</a></br>
-	<a href="write.do">글쓰기</a>
+<h1>게시판 글수정 폼</h1>
+<form action="update.do" method="post">
+	<button>수정</button>
+</form>
 </body>
 </html>

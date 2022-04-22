@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 리스트</title>
+<title>게시판 글보기</title>
 </head>
 <body>
-<h1>게시판 리스트</h1>
-	<a href="view.do">자바입니다.</a></br>
-	<a href="write.do">글쓰기</a>
+<h1>게시판 글보기</h1>
+	<a href="update.do">글수정</a>
+	<a href="delete.do">글삭제</a>
+	<a href="list.do">리스트</a>
 </body>
 </html>

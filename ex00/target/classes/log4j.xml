@@ -15,8 +15,16 @@
 	<logger name="org.zerock.controller">
 		<level value="info" />
 	</logger>
-	
 	<logger name="org.zerock.board.controller">
+		<level value="info" />
+	</logger>
+	<logger name="org.zerock.board.service">
+		<level value="info" />
+	</logger>
+	<logger name="org.zerock.board.vo">
+		<level value="info" />
+	</logger>
+	<logger name="org.zerock.board.dao">
 		<level value="info" />
 	</logger>
 	
