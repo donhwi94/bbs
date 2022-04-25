@@ -112,10 +112,16 @@
 		</dependency>  
 		
 		<!-- DB 관련 -->
+		<!-- 오라클 드라이버 : maven.org에 새롭게 등록이 되어 있다. -->
 		<dependency>
 		 	<groupId>com.oracle.database.jdbc</groupId>
 		 	<artifactId>ojdbc6</artifactId>
 		 	<version>11.2.0.4</version>
+		</dependency>
+		<dependency>
+		 	<groupId>com.zaxxer</groupId>
+		 	<artifactId>HikariCP</artifactId>
+		 	<version>2.7.4</version>
 		</dependency>
 	</dependencies>
     <build>

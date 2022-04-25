@@ -27,7 +27,7 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		// try(try안에서만 사용할 객체 선언 - try 밖으로 나가면 자동 close()) {처리문}
-		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java00", "java00")) {
+		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle")) {
 			log.info(con);
 		} catch (Exception e) {
 			e.printStackTrace();

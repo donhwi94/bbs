@@ -6,5 +6,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- bean tag 선언: 객체를 생성하고 저장해 놓으라는 선언 -->
+	<!-- HikariCP의 설정 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!-- 오라클 서버 정보, 아이디, 비밀번호 -->
+		<!-- property tag : setter()를 이용한 데이터 셋팅 -->
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="username" value="system" />
+		<property name="password" value="oracle" />
+	</bean>
+	
+	<!-- HikariCP 사용 객체 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<!-- constructor-arg tag : 생성자를 이용한 데이터 셋팅 -->
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+	
 	<context:component-scan base-package="org.zerock.sample" />
 </beans>
