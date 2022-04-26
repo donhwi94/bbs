@@ -25,7 +25,7 @@
 	
 	<!-- ORM : Mybatis에 대한 설정 - DAO 프로그램의 자동화 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
 	<context:component-scan base-package="org.zerock.sample" />

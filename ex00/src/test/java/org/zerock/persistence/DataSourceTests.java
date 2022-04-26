@@ -4,6 +4,8 @@ import java.sql.Connection;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,33 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class DataSourceTests {
 	
-	// 필요한 객체를 선언
+	// 필요한 객체를 선언 
+	// - HikariCP 사용 
 	@Setter(onMethod_ = {@Autowired})
 	private DataSource dataSource;
 	
-	// 테스트할 메서드 만들기
+	// - Mybatis-Spring 사용 : HikariCP 포함(가져다씀)
+	@Setter(onMethod_ = @Autowired)
+	private SqlSessionFactory sqlsessionFactory;
+	
+	// 테스트할 메서드 만들기 - HikariCP
 	@Test
 	public void testConnection() {
 		try (Connection conn = dataSource.getConnection()) {
-			log.info(conn);
+			log.info("HikariCP : " + conn);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	// 테스트할 메서드 만들기 - Mybatis
+	@Test
+	public void testMybatis() {
+		try (SqlSession session = sqlsessionFactory.openSession();
+			Connection con = session.getConnection()) {
+			log.info("mybatis : " + session);
+			log.info("mybatis : " + con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
