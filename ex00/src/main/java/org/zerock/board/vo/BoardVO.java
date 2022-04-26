@@ -10,7 +10,7 @@ public class BoardVO {
 	// 글번호, 제목, 내용, 작성자, 작성일, 조회수
 	private Long no;
 	private String title;
-	private String contents;
+	private String content;
 	private String writer;
 	private Date writeDate;
 	private Long hit;

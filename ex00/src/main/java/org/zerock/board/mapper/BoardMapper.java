@@ -7,6 +7,7 @@ import org.zerock.board.vo.BoardVO;
 public interface BoardMapper {
 	
 	// 1. 리스트
+	// 메서드 이름은 mapper.xml의 id 이름과 맞춘다
 	public List<BoardVO> list() throws Exception;
 	// 1-1. 전체 데이터 갯수 가져오기
 	public Long getTotalRow() throws Exception;

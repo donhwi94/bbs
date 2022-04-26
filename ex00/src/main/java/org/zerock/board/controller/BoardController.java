@@ -64,8 +64,12 @@ public class BoardController {
 	 * 맵핑 - get 방식. view.do
 	 */
 	@RequestMapping(value="/view.do", method=RequestMethod.GET)
-	public String view() {
+	public String view(Model model) throws Exception {
 		logger.info("view() - 게시판 글 보기 --------------");
+		
+		model.addAttribute("vo", service.view());
+		
+		// /WEB-INF/view/ + board/view + .jsp - servlet-context.xml
 		return MODULE + "/view";
 	}
 	

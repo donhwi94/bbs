@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardVO view() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.view();
 	}
 
 	@Override
