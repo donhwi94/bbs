@@ -21,6 +21,6 @@
 	<select id="view" resultType="org.zerock.board.vo.BoardVO">
 		select no, title, content, writer, writeDate, hit
 		from board
-		where no = 21
+		where no = 1
 	</select>
 </mapper>
