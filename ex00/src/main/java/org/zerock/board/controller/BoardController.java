@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.board.service.BoardService;
+import org.zerock.board.service.BoardServiceImpl;
 
 import lombok.Setter;
 
@@ -21,17 +23,18 @@ public class BoardController {
 	// 대신 사용 가능한 어노테이션 : @Autowired - Spring, @Inject - java
 	// DI 적용 시 BoardService 타입 : 1. BoardService 인터페이스  2. BoardServiceImpl
 	@Setter(onMethod_ = @Autowired)
-	private BoardService service;
+	private BoardServiceImpl service;
 	
 	/*
 	 * 실행할 메서드 - 리스트
 	 * 맵핑 - get 방식. list.do
 	 */
 	@RequestMapping(value="/list.do", method=RequestMethod.GET)
-	public String list() throws Exception {
+	public String list(Model model) throws Exception {
 		logger.info("list() - 게시판 리스트 --------------");
 		
-		service.list();
+		// model에 데이터를 담으면 model안에 있는 request에 데이터가 담긴다.
+		model.addAttribute("list", service.list());
 		
 		return MODULE + "/list";
 	}

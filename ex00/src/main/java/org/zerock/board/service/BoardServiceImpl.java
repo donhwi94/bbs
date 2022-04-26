@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.board.dao.BoardDAO;
+import org.zerock.board.mapper.BoardMapper;
 import org.zerock.board.vo.BoardVO;
 
 import lombok.Setter;
@@ -20,17 +21,18 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceImpl implements BoardService{
 	
 	@Setter(onMethod_ = @Autowired)
-	private BoardDAO dao;
+//	private BoardDAO dao;
+	private BoardMapper mapper;
 	
 	@Override
 	public List<BoardVO> list() throws Exception {
 		// TODO Auto-generated method stub
 		log.info("list() - 게시판 리스트 서비스 실행 ****************");
 		
-		dao.getTotalRow();
-		dao.list();
+//		dao.getTotalRow();
+//		dao.list();
 		
-		return null;
+		return mapper.list();
 	}
 
 	@Override
