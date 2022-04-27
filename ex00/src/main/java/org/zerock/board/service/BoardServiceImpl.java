@@ -48,15 +48,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int update() throws Exception {
+	public int update(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return mapper.update(vo);
 	}
 
 	@Override
-	public int delete() throws Exception {
+	public int delete(Long no) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return mapper.delete(no);
 	}
 	
 }

@@ -16,8 +16,8 @@ public interface BoardService {
 	public int write(BoardVO vo) throws Exception;
 	
 	// 4. 글수정
-	public int update() throws Exception;
+	public int update(BoardVO vo) throws Exception;
 	
 	// 5. 글삭제 
-	public int delete() throws Exception;
+	public int delete(Long no) throws Exception;
 }

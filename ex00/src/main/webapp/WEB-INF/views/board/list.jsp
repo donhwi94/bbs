@@ -34,7 +34,7 @@
 	</tr>
 </c:forEach>
 </table>
-<a href="view.do">자바입니다.</a></br>
+<a href="view.do">자바입니다.</a><br/>
 <a href="write.do">글쓰기</a>
 </body>
 </html>

@@ -81,8 +81,10 @@ public class BoardController {
 	 * 맵핑 - get 방식. update.do
 	 */
 	@RequestMapping(value="/update.do", method=RequestMethod.GET)
-	public String updateForm() {
+	public String updateForm(Model model, Long no) throws Exception {
 		logger.info("updateForm() - 게시판 글수정 폼 -----------------");
+		
+		model.addAttribute("vo", service.view(no));
 		return MODULE + "/update";
 	}
 	
@@ -91,9 +93,12 @@ public class BoardController {
 	 * 맵핑 - post 방식. update.do
 	 */
 	@RequestMapping(value="/update.do", method=RequestMethod.POST)
-	public String update() {
-		logger.info("update() - 게시판 글수정 처리 -----------------");
-		return "redirect:view.do";
+	public String update(BoardVO vo) throws Exception {
+		logger.info("update().vo : " + vo + " - 게시판 글수정 처리 -----------------");
+		
+		service.update(vo);
+		
+		return "redirect:view.do?no=" + vo.getNo();
 	}
 	
 	/*
@@ -101,8 +106,11 @@ public class BoardController {
 	 * 맵핑 - post 방식. delete.do
 	 */
 	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
-	public String delete() {
-		logger.info("delete() - 게시판 글삭제 처리 -----------------");
+	public String delete(Long no) throws Exception {
+		logger.info("delete().no : " + no + " - 게시판 글삭제 처리 -----------------");
+		
+		service.delete(no);
+		
 		return "redirect:list.do";
 	}
 }

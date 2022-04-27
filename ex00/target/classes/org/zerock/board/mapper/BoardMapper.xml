@@ -29,4 +29,17 @@
 		insert into board(no, title, content, writer, writeDate)
 		values(board_seq.nextval, #{title}, #{content}, #{writer}, SYSTIMESTAMP)
 	</insert>
+	
+	<!-- 4. 게시판 글수정 -->
+	<update id="update">
+		update board 
+		set title = #{title}, content = #{content}, writer = #{writer}
+		where no = #{no}
+	</update>
+	
+	<!-- 5. 게시판 글삭제 -->
+	<delete id="delete">
+		delete from board
+		where no = #{no}
+	</delete>
 </mapper>
