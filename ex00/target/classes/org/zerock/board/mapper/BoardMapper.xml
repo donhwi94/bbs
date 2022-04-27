@@ -21,6 +21,12 @@
 	<select id="view" resultType="org.zerock.board.vo.BoardVO">
 		select no, title, content, writer, writeDate, hit
 		from board
-		where no = 1
+		where no = #{no}
 	</select>
+	
+	<!-- 3. 게시판 글쓰기 -->
+	<insert id="write">
+		insert into board(no, title, content, writer, writeDate)
+		values(board_seq.nextval, #{title}, #{content}, #{writer}, SYSTIMESTAMP)
+	</insert>
 </mapper>

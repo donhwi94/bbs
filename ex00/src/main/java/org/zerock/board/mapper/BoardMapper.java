@@ -13,12 +13,12 @@ public interface BoardMapper {
 	public Long getTotalRow() throws Exception;
 	
 	// 2. 글보기
-	public BoardVO view() throws Exception;
+	public BoardVO view(Long no) throws Exception;
 	// 2-1. 조회수 1 증가
 	public int increase() throws Exception;
 	
 	// 3. 글쓰기
-	public int write() throws Exception;
+	public int write(BoardVO vo) throws Exception;
 	
 	// 4. 글수정
 	public int update() throws Exception;

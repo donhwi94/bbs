@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.board.service.BoardService;
 import org.zerock.board.service.BoardServiceImpl;
+import org.zerock.board.vo.BoardVO;
 
 import lombok.Setter;
 
@@ -54,8 +55,10 @@ public class BoardController {
 	 * 맵핑 - post 방식. write.do
 	 */
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)
-	public String write() {
-		logger.info("write() - 게시판 글쓰기 처리 -----------------");
+	public String write(BoardVO vo) throws Exception {
+		logger.info("write().vo : " + vo + " - 게시판 글쓰기 처리 -----------------");
+		
+		service.write(vo);
 		return "redirect:list.do";
 	}
 	
@@ -64,10 +67,10 @@ public class BoardController {
 	 * 맵핑 - get 방식. view.do
 	 */
 	@RequestMapping(value="/view.do", method=RequestMethod.GET)
-	public String view(Model model) throws Exception {
-		logger.info("view() - 게시판 글 보기 --------------");
+	public String view(Model model, Long no) throws Exception {
+		logger.info("view().no : " + no + " - 게시판 글 보기 --------------");
 		
-		model.addAttribute("vo", service.view());
+		model.addAttribute("vo", service.view(no));
 		
 		// /WEB-INF/view/ + board/view + .jsp - servlet-context.xml
 		return MODULE + "/view";
