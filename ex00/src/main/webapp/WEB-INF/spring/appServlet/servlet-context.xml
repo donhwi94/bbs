@@ -21,6 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- controller의 url 매핑을 하기 위한 패키지 선언 -->
 	<context:component-scan base-package="org.zerock" />
 	
 	

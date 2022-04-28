@@ -13,6 +13,11 @@ import org.zerock.board.vo.BoardVO;
 
 import lombok.Setter;
 
+/* 
+ * 자동 생성하게 하는 어노테이션
+ * @Controller, @Service, @Repository, @Component, @RestController, @Advice
+ * WEB-INF/spring/appServlet/servlet-context.xml 설정이 되어있어야 한다. component-scan
+ */
 @Controller
 @RequestMapping("/board")
 public class BoardController {
