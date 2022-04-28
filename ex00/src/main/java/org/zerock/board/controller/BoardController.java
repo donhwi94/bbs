@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.zerock.board.service.BoardService;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.board.service.BoardServiceImpl;
 import org.zerock.board.vo.BoardVO;
 
 import lombok.Setter;
+
 
 /* 
  * 자동 생성하게 하는 어노테이션
@@ -70,9 +71,11 @@ public class BoardController {
 	/*
 	 * 실행할 메서드 - 글보기
 	 * 맵핑 - get 방식. view.do
+	 * get 방식으로 넘어오는 데이터 받기 : url -> localhost/board/view.do?no=1&... -> data : DispatcherSurvlet이 문자열로 받아서 넘겨준다
+	 * -> 함수에서는 @RequestParam("key") int value로 받는다 -> key와 value명이 같으면 @RequestParam은 생략 가능
 	 */
 	@RequestMapping(value="/view.do", method=RequestMethod.GET)
-	public String view(Model model, Long no) throws Exception {
+	public String view(Model model, @RequestParam("no") Long no) throws Exception {
 		logger.info("view().no : " + no + " - 게시판 글 보기 --------------");
 		
 		model.addAttribute("vo", service.view(no));
@@ -86,7 +89,7 @@ public class BoardController {
 	 * 맵핑 - get 방식. update.do
 	 */
 	@RequestMapping(value="/update.do", method=RequestMethod.GET)
-	public String updateForm(Model model, Long no) throws Exception {
+	public String updateForm(Model model, @RequestParam("no") Long no) throws Exception {
 		logger.info("updateForm() - 게시판 글수정 폼 -----------------");
 		
 		model.addAttribute("vo", service.view(no));
@@ -111,11 +114,12 @@ public class BoardController {
 	 * 맵핑 - post 방식. delete.do
 	 */
 	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
-	public String delete(Long no) throws Exception {
+	public String delete(@RequestParam("no") Long no) throws Exception {
 		logger.info("delete().no : " + no + " - 게시판 글삭제 처리 -----------------");
 		
 		service.delete(no);
 		
 		return "redirect:list.do";
 	}
+	
 }
