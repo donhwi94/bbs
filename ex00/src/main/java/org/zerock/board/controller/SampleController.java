@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.zerock.board.vo.SampleDTO;
 import org.zerock.board.vo.SampleDTOList;
 
@@ -120,4 +121,29 @@ public class SampleController {
 		
 		return new ResponseEntity<String>(msg, header, HttpStatus.OK);
 	}
+	
+	/*
+	 * file upload Form
+	 */
+	@RequestMapping(value="/exUpload", method=RequestMethod.GET)
+	public void exUpload() {
+		log.info("/exUpload.. input Form...");
+	}
+	
+	/*
+	 * file upload 처리
+	 * form <-> controller : form 태그의 name과 controller parameter의 이름이 같아야 binding이 된다
+	 */
+	@RequestMapping(value="/exUploadPost", method=RequestMethod.POST)
+	public void exUploadPost(ArrayList<MultipartFile> files) {
+		for(MultipartFile file : files) {
+			if(!file.getOriginalFilename().equals("")) {
+				log.info("[upload File List]-------------------");
+				log.info("name : " + file.getOriginalFilename());
+				log.info("size : " + file.getSize());
+			}
+		}
+	}
+	
+	
 }
