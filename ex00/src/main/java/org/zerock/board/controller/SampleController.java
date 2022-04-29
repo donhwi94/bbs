@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.zerock.board.vo.SampleDTO;
 import org.zerock.board.vo.SampleDTOList;
 
@@ -122,6 +123,25 @@ public class SampleController {
 		return new ResponseEntity<String>(msg, header, HttpStatus.OK);
 	}
 	
+	/*
+	 * ModelAndView -> 메서드에서 생성해서 데이터를 담은 후 돌려준다.
+	 */
+	@RequestMapping(value="/exMav", method=RequestMethod.GET)
+	public ModelAndView exMav() {
+		ModelAndView mav = new ModelAndView();
+		
+		// 데이터 담기 -> model 대신 사용
+		// model.addAttribute("name", "lee"); 와 동일
+		mav.addObject("name", "lee");
+		
+		// jsp 정보 담기
+		// return MODULE + "/exMav"; 와 동일
+		mav.setViewName(MODULE + "/exMav");
+		
+		return mav;
+	}
+	
+	// --------------------------------------------------------------------
 	/*
 	 * file upload Form
 	 */
