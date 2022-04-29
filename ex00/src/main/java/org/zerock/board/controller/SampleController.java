@@ -2,6 +2,9 @@ package org.zerock.board.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,7 +94,6 @@ public class SampleController {
 	/*
 	 * 객체 타입의 데이터를 순수 데이터로 전송 -> JSON 데이터 활용
 	 * 순수한 데이터를 전달하는 메서드만 모아서 @RestController를 만든다.
-	 * 
 	 */
 	@RequestMapping(value="/exJSON.json", method=RequestMethod.GET)
 	public @ResponseBody SampleDTO exJSON() {
@@ -103,4 +105,19 @@ public class SampleController {
 		return dto;
 	}
 	
+	/*
+	 * 처리된 상태코드와 함께 보내는 ResponseEntity 타입
+	 */
+	@RequestMapping(value="/exEntity", method=RequestMethod.GET)
+	public ResponseEntity<String> exEntity() {
+		log.info("exEntity status code & data return ...");
+		
+		String msg = "{'name':'홍길동'}";
+		
+		// 전달되는 데이터의 정보를 헤더에 담는다. 헤더 정보에 따라 브라우저가 데이터를 표시한다
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json;charset=UTF-8");
+		
+		return new ResponseEntity<String>(msg, header, HttpStatus.OK);
+	}
 }
