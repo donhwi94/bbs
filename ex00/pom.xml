@@ -159,6 +159,13 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- JSON 데이터 처리 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.4</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>

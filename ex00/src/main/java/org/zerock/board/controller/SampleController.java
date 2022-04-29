@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.board.vo.SampleDTO;
 import org.zerock.board.vo.SampleDTOList;
 
@@ -86,4 +87,20 @@ public class SampleController {
 		
 		return MODULE + "/exModelAttr";
 	}
+	
+	/*
+	 * 객체 타입의 데이터를 순수 데이터로 전송 -> JSON 데이터 활용
+	 * 순수한 데이터를 전달하는 메서드만 모아서 @RestController를 만든다.
+	 * 
+	 */
+	@RequestMapping(value="/exJSON.json", method=RequestMethod.GET)
+	public @ResponseBody SampleDTO exJSON() {
+		log.info("exJSON dto data return ...");
+		SampleDTO dto = new SampleDTO();
+		dto.setAge(10);
+		dto.setName("lee");
+		
+		return dto;
+	}
+	
 }
